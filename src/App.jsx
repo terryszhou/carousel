@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { VanillaCarousel } from './components/VanillaCarousel';
+import { ChakraCarousel } from './components/ChakraCarousel';
 
 export const App = () => {
   const [images, setImages] = useState();
@@ -16,6 +17,7 @@ export const App = () => {
   return (
     <div className="App">
       <VanillaCarousel images={images} />
+      <ChakraCarousel images={images} />
     </div>
   );
 }
