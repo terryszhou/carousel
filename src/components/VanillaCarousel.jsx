@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+
 export const VanillaCarousel = ({ images }) => {
   const [imgIdx, setImgIdx] = useState(0);
   const [img, setImg] = useState();
@@ -49,8 +51,22 @@ export const VanillaCarousel = ({ images }) => {
   return (
     <div className="carousel-container">
       <h2 className="header">Image Carousel</h2>
-      <div className="selected-image" style={{ backgroundImage: `url(${img?.url})` }} />
+      <div className="selected-image" style={{ backgroundImage: `url(${img?.url})` }}>
+        <button className="selected-button-outer" onClick={clickLeft}>
+          <div className="selected-button-inner selected-button-left">
+            <FaArrowLeft />
+          </div>
+        </button>
+        <button className="selected-button-outer" onClick={clickRight}>
+          <div className="selected-button-inner selected-button-right">
+            <FaArrowRight />
+          </div>
+        </button>
+      </div>
       <div className="carousel">
+        <button className="carousel__button carousel__button-left" onClick={clickLeft}>
+          <FaArrowLeft />
+        </button>
         <div className="carousel__images">
           {images &&
             images.map((image, idx) => (
@@ -63,11 +79,8 @@ export const VanillaCarousel = ({ images }) => {
             ))
           }
         </div>
-        <button className="carousel__button carousel__button-left" onClick={clickLeft}>
-          Prev
-        </button>
         <button className="carousel__button carousel__button-right" onClick={clickRight}>
-          Next
+          <FaArrowRight />
         </button>
       </div>
     </div>
