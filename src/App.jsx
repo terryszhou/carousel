@@ -16,7 +16,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <VanillaCarousel images={images} />
+      {/* <VanillaCarousel images={images} /> */}
       <ChakraCarousel images={images} />
     </div>
   );

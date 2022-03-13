@@ -1,8 +1,7 @@
-import { Box, Flex, Heading, Image, Button, IconButton } from '@chakra-ui/react';
+import { Box, Flex, Heading, IconButton } from '@chakra-ui/react';
 import React, { useEffect, useState, useRef } from 'react';
 
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-
 
 export const ChakraCarousel = ({ images }) => {
   const [imgIdx, setImgIdx] = useState(0);
@@ -52,68 +51,68 @@ export const ChakraCarousel = ({ images }) => {
 
   return (
     <Flex
-      m={"20px"}
+      alignItems={"center"}
       flexDir={"column"}
-      alignItems={"center"}>
+      m={"20px"}>
       <Heading>Chakra Carousel</Heading>
       <Box
         bgImage={`url(${img?.url})`}
-        w={"60%"}
-        h={"500px"}
-        marginBottom={"8px"}
         bgPos={"center"}
         bgRepeat={"no-repeat"}
         bgSize={"cover"}
         borderRadius={"1rem"}
         display={"flex"}
-        justifyContent={"space-between"}>
+        h={"500px"}
+        justifyContent={"space-between"}
+        marginBottom={"8px"}
+        w={"60%"}>
         <Box
           h={"100%"}
-          w={"50%"}
+          onClick={clickLeft}
           opacity={0}
-          _hover={{ opacity: 1 }}
-          onClick={clickLeft}>
+          w={"50%"}
+          _hover={{ opacity: 1 }}>
           <IconButton
-            as={"icon"}
-            icon={<FaArrowLeft />}
-            bgColor={"rgba(0,0,0,0.5)"}
-            display={"flex"}
-            justify-content={"center"}
             align-items={"center"}
-            h={"100%"}
-            color={"white"}
-            borderTopLeftRadius={"1rem"}
+            as={"icon"}
+            bgColor={"rgba(0,0,0,0.5)"}
             borderBottomLeftRadius={"1rem"}
+            borderTopLeftRadius={"1rem"}
+            display={"flex"}
+            color={"white"}
+            h={"100%"}
+            icon={<FaArrowLeft />}
+            justify-content={"center"}
             marginRight={"80%"}
-            _hover={{ bgColor: "rgba(0,0,0,0.75)" }}
-            _active={{ bgColor: "rgb(0,0,0)" }} />
+            _active={{ bgColor: "rgb(0,0,0)" }}
+            _hover={{ bgColor: "rgba(0,0,0,0.75)" }} />
         </Box>
         <Box
           h={"100%"}
-          w={"50%"}
           opacity={0}
-          _hover={{ opacity: 1 }}
-          onClick={clickRight}>
+          onClick={clickRight}
+          w={"50%"}
+          _hover={{ opacity: 1 }}>
           <IconButton
-            as={"icon"}
-            icon={<FaArrowRight />}
-            bgColor={"rgba(0,0,0,0.5)"}
-            display={"flex"}
-            justify-content={"center"}
             align-items={"center"}
-            h={"100%"}
-            color={"white"}
-            borderTopRightRadius={"1rem"}
+            as={"icon"}
+            bgColor={"rgba(0,0,0,0.5)"}
             borderBottomRightRadius={"1rem"}
+            borderTopRightRadius={"1rem"}
+            color={"white"}
+            display={"flex"}
+            h={"100%"}
+            icon={<FaArrowRight />}
+            justify-content={"center"}
             marginLeft={"80%"}
-            _hover={{ bgColor: "rgba(0,0,0,0.75)" }} 
-            _active={{ bgColor: "rgb(0,0,0)" }} />
+            _active={{ bgColor: "rgb(0,0,0)" }}
+            _hover={{ bgColor: "rgba(0,0,0,0.75)" }} />
         </Box>
       </Box>
       <Flex
-        position={"relative"}
-        justifyContent={"center"}
         alignItems={"center"}
+        justifyContent={"center"}
+        position={"relative"}
         w={"100%"}>
         <IconButton
           as={"icon"}
@@ -121,29 +120,27 @@ export const ChakraCarousel = ({ images }) => {
           mx={"5px"}
           onClick={clickLeft} />
         <Flex
-          w={"60%"}
-          overflowX={"hidden"}
           bgColor={"rgba(0,0,0,0.5)"}
           borderRadius={"1rem"}
-          p={"1rem"}>
-          {images &&
-            images.map((image, idx) => (
-              <Box
-                onClick={() => handleImgChange(idx)}
-                key={image.id}
-                ref={(e) => carouselRef.current[idx] = e}
-                bgImage={`url(${image.url})`}
-                marginRight={"10px"}
-                h={"150px"}
-                minW={"150px"}
-                border={imgIdx === idx ? "3px solid #ffa700 !important" : "3px solid #ffa70000"}
-                bgPos={"center"}
-                bgRepeat={"no-repeat"}
-                bgSize={"cover"}
-                borderRadius={"1rem"}
-                opacity={imgIdx === idx ? 1 : 0.5} />
-            ))
-          }
+          overflowX={"hidden"}
+          p={"1rem"}
+          w={"60%"}>
+          {images && images.map((image, idx) => (
+            <Box
+              bgImage={`url(${image.url})`}
+              bgPos={"center"}
+              bgRepeat={"no-repeat"}
+              bgSize={"cover"}
+              border={imgIdx === idx ? "3px solid #ffa700 !important" : "3px solid #ffa70000"}
+              borderRadius={"1rem"}
+              h={"150px"}
+              key={image.id}
+              marginRight={"10px"}
+              minW={"150px"}
+              onClick={() => handleImgChange(idx)}
+              opacity={imgIdx === idx ? 1 : 0.5}
+              ref={(e) => carouselRef.current[idx] = e} />
+          ))}
         </Flex>
         <IconButton
           as={"icon"}
